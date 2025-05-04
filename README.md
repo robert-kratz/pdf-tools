@@ -2,7 +2,7 @@
 
 ## Description
 
-PDF Tools is a web application designed to provide simple, client-side PDF manipulation functionalities. Currently, it supports splitting and merging PDF files directly within the browser, ensuring user privacy and data security. No server-side processing is involved.
+PDF Tools is a web application designed to provide simple, server-side PDF manipulation functionalities. Currently, it supports splitting and merging PDF files directly within the browser, ensuring user privacy and data security. No server-side processing is involved.
 
 ## Features
 
@@ -128,10 +128,6 @@ The application uses Zustand for state management (in `lib/store.ts`). It manage
 * `selectedForMerge`: An array of file IDs that are selected for merging.
 * `currentOperation`: The current operation being performed (`'split'` or `'merge'`).
 * `downloads`: An array of `DownloadEntry` objects representing the processed files available for download.
-
-## Client-Side Processing
-
-All PDF processing is performed on the client-side using JavaScript libraries (`pdf-lib`, `jszip`). This ensures that no data is uploaded to a server, enhancing user privacy and data security.
 
 ## Notes
 
