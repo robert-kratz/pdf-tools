@@ -121,10 +121,8 @@ export default function MergePage() {
               {files.length === 0 ? (
                 <UploadZone />
               ) : (
-                <FileList 
-                  mode="select"
-                  onPreviewClick={handlePreviewClick}
-                />
+                <FileList
+                    mode="select"/>
               )}
             </CardContent>
           </Card>

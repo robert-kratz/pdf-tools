@@ -175,7 +175,6 @@ export default function SplitPage() {
               ) : (
                 <FileList 
                   onSplitClick={handleFileSelect}
-                  onPreviewClick={handlePreviewClick}
                 />
               )}
             </CardContent>

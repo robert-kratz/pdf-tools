@@ -10,8 +10,8 @@ import PrivacyBanner from "@/components/privacy-banner";
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'PDF Tools - Split, Merge, and Protect PDFs',
-  description: 'Easy-to-use online tools for PDF management. Split, merge, and protect your PDF files with confidence.',
+  title: 'PDF Tools - Split and Merge PDFs',
+  description: 'Easy-to-use online tools for PDF management. Split and merge your PDF files with confidence.',
 };
 
 export default function RootLayout({

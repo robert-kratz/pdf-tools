@@ -9,7 +9,7 @@ const usePdfProcessor = () => {
   const { addDownload } = usePdfStore();
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Helper to create a download entry and add to store
   const createDownload = useCallback((blob: Blob, filename: string): DownloadEntry => {
     const url = URL.createObjectURL(blob);
@@ -21,7 +21,7 @@ const usePdfProcessor = () => {
       size: blob.size,
       timestamp: Date.now(),
     };
-    
+
     addDownload(download);
     return download;
   }, [addDownload]);
@@ -30,11 +30,11 @@ const usePdfProcessor = () => {
   const splitPdf = useCallback(async (fileId: string, ranges: number[][]) => {
     setIsProcessing(true);
     setError(null);
-    
+
     try {
       const { files } = usePdfStore.getState();
       const fileEntry = files.find(f => f.id === fileId);
-      
+
       if (!fileEntry) {
         throw new Error('File not found');
       }
@@ -58,21 +58,21 @@ const usePdfProcessor = () => {
     } catch (err: any) {
       setError(err.message || 'Failed to split PDF');
       console.error('PDF Split Error:', err);
-      return [];
+      return null;
     } finally {
       setIsProcessing(false);
     }
   }, [createDownload]);
-  
+
   // Merge multiple PDFs into one
   const mergePdfs = useCallback(async (fileIds: string[], outputName: string = 'merged.pdf') => {
     setIsProcessing(true);
     setError(null);
-    
+
     try {
       const { files } = usePdfStore.getState();
       const filesToMerge = files.filter(f => fileIds.includes(f.id));
-      
+
       if (filesToMerge.length < 2) {
         throw new Error('At least two files are required for merging');
       }
@@ -102,7 +102,7 @@ const usePdfProcessor = () => {
       setIsProcessing(false);
     }
   }, [createDownload]);
-  
+
   return {
     splitPdf,
     mergePdfs,

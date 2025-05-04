@@ -76,9 +76,8 @@ export default function Home() {
             className="mb-12"
           >
             <h2 className="text-xl font-semibold mb-4">Your Files</h2>
-            <FileList 
+            <FileList
               onSplitClick={handleSplitClick}
-              onMergeClick={handleMergeClick}
             />
           </motion.div>
         )}

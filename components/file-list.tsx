@@ -17,7 +17,6 @@ import { format } from "date-fns";
 import { usePdfStore } from "@/lib/store";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import usePdfThumbnail from "@/hooks/use-pdf-thumbnail";
 import { cn } from "@/lib/utils";
 import {
   Tooltip,
@@ -30,27 +29,13 @@ import UploadZone from "@/components/upload-zone";
 interface FileListProps {
   mode?: "select" | "preview";
   onSplitClick?: (fileId: string) => void;
-  onMergeClick?: (fileId: string) => void;
-  onPreviewClick?: (fileId: string) => void;
 }
 
 export default function FileList({
                                    mode = "preview",
                                    onSplitClick,
-                                   onMergeClick,
-                                   onPreviewClick,
-                                 }) {
+                                 } : FileListProps) {
   const { files, removeFile, toggleMergeSelection, selectedForMerge } = usePdfStore();
-  const { generateThumbnail } = usePdfThumbnail();
-
-  // Generate thumbnails for files that don't have them
-  useEffect(() => {
-    files.forEach((file) => {
-      if (!file.thumbnail) {
-        generateThumbnail(file.id);
-      }
-    });
-  }, [files, generateThumbnail]);
 
   // Format file size for display
   const formatFileSize = (bytes: number): string => {
