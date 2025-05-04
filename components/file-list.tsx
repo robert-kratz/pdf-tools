@@ -28,11 +28,13 @@ import UploadZone from "@/components/upload-zone";
 
 interface FileListProps {
   mode?: "select" | "preview";
+  hideUpload?: boolean;
   onSplitClick?: (fileId: string) => void;
 }
 
 export default function FileList({
                                    mode = "preview",
+    hideUpload = false,
                                    onSplitClick,
                                  } : FileListProps) {
   const { files, removeFile, toggleMergeSelection, selectedForMerge } = usePdfStore();
@@ -47,9 +49,13 @@ export default function FileList({
   return (
       <div className="space-y-3">
         {/* Upload More Button */}
-        <Card className="p-4 border-dashed">
-          <UploadZone />
-        </Card>
+          {
+              !hideUpload && (
+                  <Card className="p-4 border-dashed">
+                      <UploadZone />
+                  </Card>
+              )
+          }
 
         <AnimatePresence initial={false}>
           {files.map((file) => (

@@ -78,6 +78,7 @@ export default function Home() {
             <h2 className="text-xl font-semibold mb-4">Your Files</h2>
             <FileList
               onSplitClick={handleSplitClick}
+              hideUpload={true}
             />
           </motion.div>
         )}
